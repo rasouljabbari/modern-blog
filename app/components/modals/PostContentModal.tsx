@@ -1,4 +1,5 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { toast } from 'react-toastify';
 
 const PostContentModal = ({ setShowModal, post, isNew = false }: modalContentType) => {
     const [inputs, setInputs] = useState<postContentType>({
@@ -25,6 +26,7 @@ const PostContentModal = ({ setShowModal, post, isNew = false }: modalContentTyp
         e.preventDefault()
         setLoader(true)
         setShowModal(false)
+        toast.success(`${isNew ? 'Created' : 'Updated'} post successfully`)
     }
     return (
         <div className="w-full h-full px-8 py-10 bg-white rounded-2xl flex-col justify-start items-start gap-6 inline-flex">

@@ -1,4 +1,6 @@
 import { FormEvent, useState } from "react";
+import { toast } from 'react-toastify';
+
 const DeletePostConfirmModal = ({ setShowModal, postId }: deletePostType) => {
 
     const [loader, setLoader] = useState(false)
@@ -9,6 +11,7 @@ const DeletePostConfirmModal = ({ setShowModal, postId }: deletePostType) => {
         
         setLoader(true)
         setShowModal(false)
+        toast.success('deleted post successfully')
     }
 
     return (
