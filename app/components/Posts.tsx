@@ -1,20 +1,12 @@
 import { getPosts } from "@api/post-apis";
-import PostItem from "./PostItem";
+import PostListInfiniteScroll from "./PostListInfiniteScroll";
 
 const Posts = async() => {
-    const postsList = await getPosts()
-    console.log(postsList);
+    const postsList = await getPosts(1)
 
     return (
-        <section id="posts" className="grid grid-cols-1 sm:grid-cols-2 gap-6 pb-10">
-            {
-                postsList.map((post: postType )=> (
-                    <PostItem
-                        key={post.id}
-                        post={post}
-                    />
-                ))
-            }
+        <section id="posts">
+            <PostListInfiniteScroll initialPosts={postsList}/>
         </section>
     );
 };

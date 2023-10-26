@@ -20,6 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className + ' space-y-4 md:space-y-8'}>
+        <Navbar/>
+        <div className="container mx-auto px-4">
+          {children}
+        </div>
         <ToastContainer
           position="top-center"
           autoClose={5000}
@@ -31,10 +35,6 @@ export default function RootLayout({
           pauseOnHover
           theme="colored"
         />
-        <Navbar/>
-        <div className="container mx-auto px-4">
-          {children}
-        </div>
       </body>
     </html>
   )

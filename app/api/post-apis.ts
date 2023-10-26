@@ -1,7 +1,8 @@
-export async function getPosts() {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=10&_page=1`)
+export async function getPosts(page: number | [0]) {
+    console.log(page);
+    
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=10`)
     if (!res.ok) {
-        // This will activate the closest `error.js` Error Boundary
         throw new Error('Failed to fetch posts data')
     }
     return res.json()
