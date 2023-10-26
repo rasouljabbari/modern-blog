@@ -29,3 +29,14 @@ export async function createPost({ title, body, userId }: createContentType) {
         });
     return res
 }
+
+export async function deletePost({ postId }: {postId: number}) {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+        method: 'DELETE'
+    })
+        .then((response) => response.json())
+        .then((json) => {
+            toast.success('Deleted post successfully')
+        });
+    return 200
+}

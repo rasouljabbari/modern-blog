@@ -1,17 +1,31 @@
+import { deletePost } from "@api/post-apis";
 import { FormEvent, useState } from "react";
-import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from "react-redux"
+import { updatePostList } from "../../redux/features/postsSlice";
 
 const DeletePostConfirmModal = ({ setShowModal, postId }: deletePostType) => {
 
     const [loader, setLoader] = useState(false)
+    const dispatch = useDispatch()
+    const list = useSelector((state: any) => state.postList);
 
     const handleForm = async (e: FormEvent) => {
         e.preventDefault()
-        console.log(postId);
-        
+
         setLoader(true)
-        setShowModal(false)
-        toast.success('deleted post successfully')
+
+        const responseCode = await deletePost({ postId })
+
+        if (responseCode === 200) {
+            setShowModal(false)
+            let deletedIndex: number = list.findIndex((item: postType) => item.id === postId)
+            if (deletedIndex > -1) {
+                let arr = [...list]
+                arr.splice(deletedIndex, 1);
+            
+                dispatch(updatePostList(arr))
+            }
+        }
     }
 
     return (
