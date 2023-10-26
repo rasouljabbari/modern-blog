@@ -24,3 +24,8 @@ interface modalContentType {
     post?: postType,
     isNew?: boolean
 }
+
+interface deletePostType {
+    setShowModal: (value: boolean) => void,
+    postId: number,
+}
