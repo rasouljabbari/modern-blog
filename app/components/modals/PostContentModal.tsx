@@ -1,6 +1,7 @@
 import { createPost } from "@api/post-apis";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux'
+import { updatePostList } from "../../redux/features/postsSlice";
 
 const PostContentModal = ({ setShowModal, post, isNew = false }: modalContentType) => {
     const [inputs, setInputs] = useState<postContentType>({
@@ -8,6 +9,9 @@ const PostContentModal = ({ setShowModal, post, isNew = false }: modalContentTyp
         body: '',
     })
     const [loader, setLoader] = useState(false)
+
+    const dispatch = useDispatch()
+    const list = useSelector((state: any) => state.postList);
 
     useEffect(() => {
         setInputs({
@@ -25,18 +29,22 @@ const PostContentModal = ({ setShowModal, post, isNew = false }: modalContentTyp
 
     const handleForm = async (e: FormEvent) => {
         e.preventDefault()
+        setLoader(true)
         if (inputs?.title && inputs?.body) {
             if (isNew) {
-                createPost({
+                const postItem = await createPost({
                     title: inputs?.title,
                     body: inputs?.body,
                     userId: 1
                 })
+                if (postItem) {
+                    dispatch(updatePostList([postItem, ...(list?.length ? list : [])]))
+                }
+                console.log('postItem : ', postItem);
             }
-            setLoader(true)
-            setShowModal(false)
-        } else {
             
+            setLoader(false)
+            setShowModal(false)
         }
     }
     return (

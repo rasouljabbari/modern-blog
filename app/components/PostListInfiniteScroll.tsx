@@ -7,7 +7,10 @@ import PostItem from "./PostItem";
 import { useInView } from "react-intersection-observer";
 import { getPosts } from "@api/post-apis";
 
+import { useDispatch, useSelector } from "react-redux";
+
 import PostsLoader from '../../public/posts-loader.svg'
+import { updatePostList } from "../redux/features/postsSlice";
 
 const PostListInfiniteScroll = ({ initialPosts }: { initialPosts: postType[] }) => {
 
@@ -16,16 +19,23 @@ const PostListInfiniteScroll = ({ initialPosts }: { initialPosts: postType[] }) 
     const [isEmptyList, setIsEmptyList] = useState(false)
     const [ref, inView] = useInView()
 
+    const list = useSelector((state: any) => state.postList);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (initialPosts) { dispatch(updatePostList(initialPosts)) }
+    }, [initialPosts])
+
     const loadMorePosts = async () => {
         const nextPage = page + 1
         const posts = await getPosts(nextPage)
 
         if (posts?.length > 0) {
             setPage(nextPage)
-            setPostList((prev: postType[] | undefined) => [
-                ...(prev?.length ? prev : []),
+            dispatch(updatePostList([
+                ...postList,
                 ...posts
-            ])
+            ]))
         } else {
             setIsEmptyList(true)
         }
@@ -36,7 +46,13 @@ const PostListInfiniteScroll = ({ initialPosts }: { initialPosts: postType[] }) 
             loadMorePosts()
         }
     }, [inView])
-    
+
+    useEffect(() => {
+        if (list) {
+            setPostList(list)
+            setIsEmptyList(false)
+        }
+    }, [list])
 
     return (
         <>
@@ -51,7 +67,7 @@ const PostListInfiniteScroll = ({ initialPosts }: { initialPosts: postType[] }) 
                     ))
                 }
             </div>
-            
+
             <div ref={ref} className="w-full py-8">
                 {
                     inView && !isEmptyList &&
@@ -60,7 +76,7 @@ const PostListInfiniteScroll = ({ initialPosts }: { initialPosts: postType[] }) 
                         alt='posts loader'
                         className='w-fit mx-auto'
                     />
-            }
+                }
             </div>
         </>
     );

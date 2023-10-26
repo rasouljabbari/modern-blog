@@ -4,12 +4,12 @@ import DeleteIconSVG from "./svg/DeleteIconSVG";
 import ModalParent from "./modals/ModalParent";
 import DeletePostConfirmModal from "./modals/DeletePostConfirmModal";
 
-const DeletePost = ({ postId }:{postId: number} ) => {
+const DeletePost = ({ postId }: { postId: number }) => {
     const [showModal, setShowModal] = useState(false);
     return (
         <>
             <button onClick={() => setShowModal(true)}>
-                <DeleteIconSVG/>
+                <DeleteIconSVG />
             </button>
             {
                 showModal &&
@@ -18,7 +18,7 @@ const DeletePost = ({ postId }:{postId: number} ) => {
                     size="sm"
                 >
                     <DeletePostConfirmModal
-                            postId={postId}
+                        postId={postId}
                         setShowModal={setShowModal}
                     />
                 </ModalParent>

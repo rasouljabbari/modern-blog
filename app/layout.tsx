@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './globals.css'
 import Navbar from '@comp/Navbar'
 import { ToastContainer } from 'react-toastify'
+import { Providers } from './redux/provider';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,22 +20,26 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className + ' space-y-4 md:space-y-8'}>
-        <Navbar/>
-        <div className="container mx-auto px-4">
-          {children}
-        </div>
-        <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="colored"
-        />
+      <body className={inter.className}>
+        <Providers>
+          <div className="space-y-4 md:space-y-8">
+            <Navbar />
+            <div className="container mx-auto px-4">
+              {children}
+            </div>
+            <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="colored"
+            />
+          </div>
+        </Providers>
       </body>
     </html>
   )
