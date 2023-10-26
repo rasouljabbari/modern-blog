@@ -1,7 +1,8 @@
-import { createPost } from "@api/post-apis";
+import { createPost, updatePost } from "@api/post-apis";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { updatePostList } from "../../redux/features/postsSlice";
+import { edit_item_with_id } from "../../utils/generalFunctions";
 
 const PostContentModal = ({ setShowModal, post, isNew = false }: modalContentType) => {
     const [inputs, setInputs] = useState<postContentType>({
@@ -40,7 +41,16 @@ const PostContentModal = ({ setShowModal, post, isNew = false }: modalContentTyp
                 if (postItem) {
                     dispatch(updatePostList([postItem, ...(list?.length ? list : [])]))
                 }
-                console.log('postItem : ', postItem);
+            } else {
+                const postItem = await updatePost({
+                    title: inputs?.title,
+                    body: inputs?.body,
+                    userId: post?.userId,
+                    postId: post?.id
+                })
+                if (postItem) {
+                    dispatch(updatePostList(edit_item_with_id(list,postItem)))
+                }
             }
             
             setLoader(false)

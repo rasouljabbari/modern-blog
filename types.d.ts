@@ -4,9 +4,10 @@ interface postContentType {
 }
 
 interface createContentType {
-    userId: number,
+    userId?: number,
     title: string,
-    body: string
+    body: string,
+    postId?: number
 }
 
 interface postType extends createContentType{
