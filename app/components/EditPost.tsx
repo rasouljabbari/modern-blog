@@ -16,8 +16,8 @@ const EditPost = ({ post }: propsType) => {
                     setShowModal={setShowModal}
                     size="md"
                 >
-                        <EditModal
-                            post={post}
+                    <EditModal
+                        post={post}
                         setShowModal={setShowModal}
                     />
                 </ModalParent>

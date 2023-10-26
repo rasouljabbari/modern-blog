@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className + ' space-y-4'}>
+      <body className={inter.className + ' space-y-4 md:space-y-8'}>
         <Navbar/>
         <div className="container mx-auto px-4">
           {children}
