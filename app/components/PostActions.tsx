@@ -1,11 +1,11 @@
-import DeleteIconSVG from "./svg/DeleteIconSVG";
-import EditIconSVG from "./svg/EditIconSVG";
+import DeletePost from "./DeletePost";
+import EditPost from "./EditPost";
 
-const PostActions = () => {
+const PostActions = ({ post }: propsType) => {
     return (
         <div className="flex items-center justify-end gap-2 w-full">
-            <EditIconSVG />
-            <DeleteIconSVG />
+            <EditPost post={post} />
+            <DeletePost/>
         </div>
     );
 };
