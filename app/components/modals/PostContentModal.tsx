@@ -1,3 +1,4 @@
+import { createPost } from "@api/post-apis";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { toast } from 'react-toastify';
 
@@ -24,9 +25,19 @@ const PostContentModal = ({ setShowModal, post, isNew = false }: modalContentTyp
 
     const handleForm = async (e: FormEvent) => {
         e.preventDefault()
-        setLoader(true)
-        setShowModal(false)
-        toast.success(`${isNew ? 'Created' : 'Updated'} post successfully`)
+        if (inputs?.title && inputs?.body) {
+            if (isNew) {
+                createPost({
+                    title: inputs?.title,
+                    body: inputs?.body,
+                    userId: 1
+                })
+            }
+            setLoader(true)
+            setShowModal(false)
+        } else {
+            
+        }
     }
     return (
         <div className="w-full h-full px-8 py-10 bg-white rounded-2xl flex-col justify-start items-start gap-6 inline-flex">

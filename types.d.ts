@@ -2,11 +2,15 @@ interface postContentType {
     title?: string,
     body?: string
 }
-interface postType {
+
+interface createContentType {
     userId: number,
-    id: number,
     title: string,
     body: string
+}
+
+interface postType extends createContentType{
+    id: number
 }
 
 interface propsType {
