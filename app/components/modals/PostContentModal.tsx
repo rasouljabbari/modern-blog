@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
-const EditModal = ({ setShowModal, post, isNew = false }: modalContentType) => {
+const PostContentModal = ({ setShowModal, post, isNew = false }: modalContentType) => {
     const [inputs, setInputs] = useState<postContentType>({
         title: '',
         body: '',
@@ -68,4 +68,4 @@ const EditModal = ({ setShowModal, post, isNew = false }: modalContentType) => {
     );
 };
 
-export default EditModal;
+export default PostContentModal;

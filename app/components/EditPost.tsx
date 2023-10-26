@@ -2,7 +2,7 @@
 import { useState } from "react";
 import EditIconSVG from "./svg/EditIconSVG";
 import ModalParent from "./modals/ModalParent";
-import EditModal from "./modals/EditModal";
+import PostContentModal from "./modals/PostContentModal";
 const EditPost = ({ post }: propsType) => {
     const [showModal, setShowModal] = useState(false);
     return (
@@ -16,7 +16,7 @@ const EditPost = ({ post }: propsType) => {
                     setShowModal={setShowModal}
                     size="md"
                 >
-                    <EditModal
+                    <PostContentModal
                         post={post}
                         setShowModal={setShowModal}
                     />

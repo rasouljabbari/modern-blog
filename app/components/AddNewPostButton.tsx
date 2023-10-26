@@ -1,12 +1,11 @@
 'use client'
 import { useState } from 'react';
 import ModalParent from './modals/ModalParent';
-import EditModal from './modals/EditModal';
+import PostContentModal from './modals/PostContentModal';
 
 const AddNewPostButton = () => {
     const [showModal, setShowModal] = useState(false);
-    console.log(showModal);
-    
+
     return (
         <>
             <button
@@ -16,14 +15,14 @@ const AddNewPostButton = () => {
                 Create New Post
             </button>
             {
-                showModal && 
+                showModal &&
                 <ModalParent
                     setShowModal={setShowModal}
-                        size='md'>
-                        <EditModal
-                            isNew
-                            setShowModal={setShowModal}
-                        />
+                    size='md'>
+                    <PostContentModal
+                        isNew
+                        setShowModal={setShowModal}
+                    />
                 </ModalParent>
             }
         </>
