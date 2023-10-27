@@ -29,8 +29,8 @@ const DeletePostConfirmModal = ({ setShowModal, postId }: deletePostType) => {
     }
 
     return (
-        <div className="w-full h-full px-8 py-10 bg-white rounded-2xl flex-col justify-start items-start gap-6 inline-flex">
-            <p className="text-slate-900 text-xl font-medium leading-9">Are you sure you want to <b className="text-rose-500">DELETE</b> this post?</p>
+        <div className="w-full h-full px-8 py-10 bg-white dark:bg-slate-700 rounded-2xl flex-col justify-start items-start gap-6 inline-flex">
+            <p className="text-slate-900 dark:text-slate-100 text-xl font-medium leading-9">Are you sure you want to <b className="text-rose-500">DELETE</b> this post?</p>
             <form onSubmit={handleForm} className="self-stretch justify-start items-start gap-4 flex">
                 <button
                     type="button"

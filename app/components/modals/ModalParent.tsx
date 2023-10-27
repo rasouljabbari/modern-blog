@@ -14,7 +14,7 @@ function ModalParent({ setShowModal, size, children }: modalTypes) {
                 onClick={() => setShowModal(false)}></div>
             <div className="flex items-center min-h-screen px-4 py-8">
                 <div
-                    className={`${modalSize[size]} bg-white w-full animation-in relative mx-auto rounded-xl shadow-lg`}>
+                    className={`${modalSize[size]} bg-white dark:bg-slate-700 w-full animation-in relative mx-auto rounded-xl shadow-lg`}>
                     <Image
                         src={CloseIcon}
                         alt='close icon'

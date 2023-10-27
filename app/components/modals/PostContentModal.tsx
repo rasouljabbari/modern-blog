@@ -58,29 +58,29 @@ const PostContentModal = ({ setShowModal, post, isNew = false }: modalContentTyp
         }
     }
     return (
-        <div className="w-full h-full px-8 py-10 bg-white rounded-2xl flex-col justify-start items-start gap-6 inline-flex">
+        <div className="w-full h-full px-8 py-10 bg-white dark:bg-slate-700 rounded-2xl flex-col justify-start items-start gap-6 inline-flex">
             <div className="self-stretch h-20 flex-col justify-start items-center gap-3 flex">
                 <h3 className="text-center text-blue-600 text-[28px] font-medium leading-9">{isNew ? 'Create' : 'Edit'} post</h3>
             </div>
             <form onSubmit={handleForm} className="self-stretch flex-col justify-start items-start gap-6 flex">
 
                 <label htmlFor="title" className="w-full flex flex-col gap-2">
-                    <span className="text-md text-neutral-800">Title</span>
+                    <span className="text-md text-neutral-800 dark:text-slate-100">Title</span>
                     <input
                         value={inputs?.title}
                         onChange={handleChange}
-                        className="w-full h-full p-4 bg-neutral-100 rounded-lg self-stretch border-none outline-none text-zinc-500 px-2 text-sm font-medium leading-normal"
+                        className="w-full h-full p-4 bg-neutral-100 dark:bg-slate-300 dark:text-black rounded-lg self-stretch border-none outline-none text-zinc-500 px-2 text-sm font-medium leading-normal"
                         placeholder="Enter post title"
                         name="title"
                     />
                 </label>
                 <label htmlFor="body" className="w-full flex flex-col gap-2">
-                    <span className="text-md text-neutral-800">Body</span>
+                    <span className="text-md text-neutral-800 dark:text-slate-100">Body</span>
                     <textarea
                         rows={5}
                         value={inputs?.body}
                         onChange={handleChange}
-                        className="w-full h-full p-4 self-stretch bg-neutral-100 rounded-lg border-none outline-none text-zinc-500 px-2 text-sm font-medium leading-normal"
+                        className="w-full h-full p-4 self-stretch bg-neutral-100 dark:bg-slate-300 dark:text-black rounded-lg border-none outline-none text-zinc-500 px-2 text-sm font-medium leading-normal"
                         placeholder="Enter post body"
                         name="body"
                     />

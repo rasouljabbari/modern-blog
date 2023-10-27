@@ -1,9 +1,19 @@
 import { toast } from "react-toastify";
+import {API_URL} from "../../config"
+
+const headers = {
+    'Content-type': 'application/json; charset=UTF-8',
+}
 
 export async function getPosts(page: number | [0]) {
-    console.log(page);
-
-    const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=10`)
+    const res = await fetch(`${API_URL}/posts?_page=${page}&_limit=10`,
+        {
+            next:
+            {
+                revalidate: 3600,
+                tags: ['post']
+            }
+        })
     if (!res.ok) {
         throw new Error('Failed to fetch posts data')
     }
@@ -11,16 +21,14 @@ export async function getPosts(page: number | [0]) {
 }
 
 export async function createPost({ title, body, userId }: createContentType) {
-    const res = await fetch('https://jsonplaceholder.typicode.com/posts', {
+    const res = await fetch(`${API_URL}/posts`, {
         method: 'POST',
         body: JSON.stringify({
             title,
             body,
             userId,
         }),
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
+        headers,
     })
         .then((response) => response.json())
         .then((json) => {
@@ -32,7 +40,7 @@ export async function createPost({ title, body, userId }: createContentType) {
 
 
 export async function deletePost({ postId }: {postId: number}) {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+    const res = await fetch(`${API_URL}/posts/${postId}`, {
         method: 'DELETE'
     })
         .then((response) => response.json())
@@ -43,7 +51,7 @@ export async function deletePost({ postId }: {postId: number}) {
 }
 
 export async function updatePost({ title, body, userId,postId }: createContentType) {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+    const res = await fetch(`${API_URL}/posts/${postId}`, {
         method: 'PUT',
         body: JSON.stringify({
             id: postId,
@@ -51,9 +59,7 @@ export async function updatePost({ title, body, userId,postId }: createContentTy
             body,
             userId,
         }),
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
+        headers,
     })
         .then((response) => response.json())
         .then((json) => {
