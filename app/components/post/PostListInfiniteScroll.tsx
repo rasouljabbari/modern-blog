@@ -7,8 +7,8 @@ import { getPosts } from "@api/post-apis";
 import { useDispatch, useSelector } from "react-redux";
 
 import PostItem from "./PostItem";
-import PostsLoader from '../../public/posts-loader.svg'
-import { updatePostList } from "../redux/features/postsSlice";
+import PostsLoader from '../../../public/svg/posts-loader.svg'
+import { updatePostList } from "../../redux/features/postsSlice";
 
 const PostListInfiniteScroll = ({ initialPosts }: { initialPosts: postType[] }) => {
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-import CloseIcon from '../../../public/close.svg'
+import CloseIcon from '../../../public/svg/close.svg'
 
 const modalSize = {
     'sm': 'max-w-[400px]',
