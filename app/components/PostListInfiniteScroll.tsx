@@ -24,7 +24,7 @@ const PostListInfiniteScroll = ({ initialPosts }: { initialPosts: postType[] }) 
 
     useEffect(() => {
         if (initialPosts) { dispatch(updatePostList(initialPosts)) }
-    }, [initialPosts])
+    }, [initialPosts, dispatch])
 
     const loadMorePosts = async () => {
         const nextPage = page + 1

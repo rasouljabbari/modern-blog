@@ -24,9 +24,9 @@ export function ProfileButton({ user }: any) {
       <SecondaryButton>
         <Image
           src={user?.image}
-          width="40"
-          height="40"
-          className="h-10 w-10 rounded-full border border-white"
+          width="32"
+          height="32"
+          className="h-8 w-8 rounded-full border border-white"
           alt={`${user?.name}'s avatar`}
         />
         <p className="hidden md:mr-2 md:block">{user?.name}</p>
