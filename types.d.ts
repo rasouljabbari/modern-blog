@@ -20,7 +20,7 @@ interface propsType {
 
 interface modalTypes {
     setShowModal: (value: boolean) => void,
-    size: 'sm' | 'md' | 'lg',
+    size: 'sm' | 'md',
     children: React.ReactNode
 }
 

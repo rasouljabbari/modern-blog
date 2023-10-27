@@ -2,13 +2,11 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-
-import PostItem from "./PostItem";
 import { useInView } from "react-intersection-observer";
 import { getPosts } from "@api/post-apis";
-
 import { useDispatch, useSelector } from "react-redux";
 
+import PostItem from "./PostItem";
 import PostsLoader from '../../public/posts-loader.svg'
 import { updatePostList } from "../redux/features/postsSlice";
 

@@ -1,6 +1,7 @@
-import { createPost, updatePost } from "@api/post-apis";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { createPost, updatePost } from "@api/post-apis";
 import { useDispatch, useSelector } from 'react-redux'
+
 import { updatePostList } from "../../redux/features/postsSlice";
 import { edit_item_with_id } from "../../utils/generalFunctions";
 
@@ -58,7 +59,7 @@ const PostContentModal = ({ setShowModal, post, isNew = false }: modalContentTyp
         }
     }
     return (
-        <div className="w-full h-full px-8 py-10 bg-white dark:bg-slate-700 rounded-2xl flex-col justify-start items-start gap-6 inline-flex">
+        <div className="w-full h-full px-4 md:px-8 py-10 bg-white dark:bg-slate-700 rounded-2xl flex-col justify-start items-start gap-6 inline-flex">
             <div className="self-stretch h-20 flex-col justify-start items-center gap-3 flex">
                 <h3 className="text-center text-blue-600 text-[28px] font-medium leading-9">{isNew ? 'Create' : 'Edit'} post</h3>
             </div>

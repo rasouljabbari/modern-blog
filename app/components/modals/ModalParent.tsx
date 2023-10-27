@@ -1,16 +1,17 @@
 import React from 'react';
-import CloseIcon from '../../../public/close.svg'
 import Image from 'next/image';
+
+import CloseIcon from '../../../public/close.svg'
+
 const modalSize = {
     'sm': 'max-w-[400px]',
-    'md': 'max-w-[600px]',
-    'lg': 'max-w-[800px]'
+    'md': 'max-w-[600px]'
 }
 
 function ModalParent({ setShowModal, size, children }: modalTypes) {
     return (
         <div className="fixed inset-0 z-50 overflow-y-auto">
-            <div className="fixed inset-0 w-full h-full bg-slate-700 opacity-70"
+            <div className="fixed inset-0 w-full h-full bg-slate-700 dark:bg-slate-500 opacity-70"
                 onClick={() => setShowModal(false)}></div>
             <div className="flex items-center min-h-screen px-4 py-8">
                 <div

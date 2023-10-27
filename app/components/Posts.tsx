@@ -1,4 +1,5 @@
 import { getPosts } from "@api/post-apis";
+
 import PostListInfiniteScroll from "./PostListInfiniteScroll";
 
 const Posts = async() => {

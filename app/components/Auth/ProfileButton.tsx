@@ -1,10 +1,11 @@
 "use client";
-import {useEffect} from 'react'
+import { useEffect } from 'react'
 import { signOut } from "next-auth/react";
 import Image from 'next/image'
-import { SecondaryButton } from "./SecondaryButton";
-import LogoutIcon from "./LogoutIcon";
 import { useDispatch } from 'react-redux';
+
+import { SecondaryButton } from "./SecondaryButton";
+import LogoutIcon from "../svg/LogoutIcon";
 import { updateUserSessions } from '../../redux/features/userSessionSlice';
 
 export function ProfileButton({ user }: any) {
@@ -13,7 +14,7 @@ export function ProfileButton({ user }: any) {
     void signOut();
     dispatch(updateUserSessions({}))
   };
-  
+
 
   useEffect(() => {
     dispatch(updateUserSessions(user))

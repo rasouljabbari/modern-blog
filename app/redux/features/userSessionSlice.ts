@@ -10,8 +10,6 @@ const postSlice = createSlice({
     initialState,
     reducers: {
         updateUserSessions: (state, action) => {
-            console.log(state, action);
-            
             state.user = action.payload
         }
     },

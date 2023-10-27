@@ -1,17 +1,8 @@
-'use client'
-
-import { useEffect } from "react";
-
 interface ErrorProps {
     error: Error
 }
 
 export default function ErrorComp({ error }: ErrorProps) {
-
-    useEffect(() => {
-        console.error("error : " , error);
-    }, [error]);
-
 
     return (
         <div className="space-y-6">

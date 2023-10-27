@@ -1,8 +1,9 @@
 'use client'
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+
 import ModalParent from './modals/ModalParent';
 import PostContentModal from './modals/PostContentModal';
-import { useSelector } from 'react-redux';
 
 const AddNewPostButton = () => {
     const [showModal, setShowModal] = useState(false);

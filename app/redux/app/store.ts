@@ -1,5 +1,6 @@
 "use client";
-import { configureStore,combineReducers } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+
 import postsReducer from '../features/postsSlice'
 import userSessionsReducer from '../features/userSessionSlice'
 
