@@ -41,6 +41,7 @@ const PostContentModal = ({ setShowModal, post, isNew = false }: modalContentTyp
                 })
                 if (postItem) {
                     dispatch(updatePostList([postItem, ...(list?.length ? list : [])]))
+                    setShowModal(false)
                 }
             } else {
                 const postItem = await updatePost({
@@ -50,12 +51,12 @@ const PostContentModal = ({ setShowModal, post, isNew = false }: modalContentTyp
                     postId: post?.id
                 })
                 if (postItem) {
-                    dispatch(updatePostList(edit_item_with_id(list,postItem)))
+                    dispatch(updatePostList(edit_item_with_id(list, postItem)))
+                    setShowModal(false)
                 }
             }
-            
             setLoader(false)
-            setShowModal(false)
+
         }
     }
     return (
@@ -90,9 +91,9 @@ const PostContentModal = ({ setShowModal, post, isNew = false }: modalContentTyp
                 <div className="self-stretch justify-start items-center gap-4 inline-flex">
                     <button type="submit" disabled={!inputs?.body || !inputs.title} className="grow shrink basis-0 h-12 px-5 py-3 disabled:bg-blue-400 bg-blue-600 hover:bg-blue-700 animation-transition rounded-lg shadow justify-center items-center gap-2 flex">
                         <div className="text-right text-white text-base font-normal leading-normal">
-                            {loader ? 'pending...' : 
+                            {loader ? 'pending...' :
                                 isNew ? 'Create post' : 'Save changes'
-                        }</div>
+                            }</div>
                     </button>
                 </div>
             </form>

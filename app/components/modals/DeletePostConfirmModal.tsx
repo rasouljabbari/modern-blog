@@ -17,7 +17,7 @@ const DeletePostConfirmModal = ({ setShowModal, postId }: deletePostType) => {
 
         const responseCode = await deletePost({ postId })
 
-        if (responseCode === 200) {
+        if (responseCode) {
             setShowModal(false)
             let deletedIndex: number = list.findIndex((item: postType) => item.id === postId)
             if (deletedIndex > -1) {

@@ -1,12 +1,13 @@
 import { toast } from "react-toastify";
-import {API_URL} from "../../config"
+import { API_URL } from "../../config"
+import { apiErrorHandler } from "../utils/apiErrorHandler";
 
 const headers = {
     'Content-type': 'application/json; charset=UTF-8',
 }
 
 export async function getPosts(page: number | [0]) {
-    const res = await fetch(`${API_URL}/posts?_page=${page}&_limit=10`,
+    return await fetch(`${API_URL}/posts?_page=${page}&_limit=10`,
         {
             next:
             {
@@ -14,14 +15,16 @@ export async function getPosts(page: number | [0]) {
                 tags: ['post']
             }
         })
-    if (!res.ok) {
-        throw new Error('Failed to fetch posts data')
-    }
-    return res.json()
+        .then((response) => {
+            return response.json()
+        })
+        .catch((err) => {
+            return apiErrorHandler(err)
+        })
 }
 
 export async function createPost({ title, body, userId }: createContentType) {
-    const res = await fetch(`${API_URL}/posts`, {
+    return await fetch(`${API_URL}/posts`, {
         method: 'POST',
         body: JSON.stringify({
             title,
@@ -30,28 +33,31 @@ export async function createPost({ title, body, userId }: createContentType) {
         }),
         headers,
     })
-        .then((response) => response.json())
-        .then((json) => {
+        .then((response) => {
             toast.success('Created post successfully')
-            return json;
-        });
-    return res
+            return response.json()
+        })
+        .catch((err) => {
+            return apiErrorHandler(err)
+        })
 }
 
 
-export async function deletePost({ postId }: {postId: number}) {
-    const res = await fetch(`${API_URL}/posts/${postId}`, {
+export async function deletePost({ postId }: { postId: number }) {
+    return await fetch(`${API_URL}/posts/${postId}`, {
         method: 'DELETE'
     })
-        .then((response) => response.json())
-        .then((json) => {
+        .then((response) => {
             toast.success('Deleted post successfully')
-        });
-    return 200
+            return response.json()
+        })
+        .catch((err) => {
+            return apiErrorHandler(err)
+        })
 }
 
-export async function updatePost({ title, body, userId,postId }: createContentType) {
-    const res = await fetch(`${API_URL}/posts/${postId}`, {
+export async function updatePost({ title, body, userId, postId }: createContentType) {
+    return await fetch(`${API_URL}/posts/${postId}`, {
         method: 'PUT',
         body: JSON.stringify({
             id: postId,
@@ -61,10 +67,11 @@ export async function updatePost({ title, body, userId,postId }: createContentTy
         }),
         headers,
     })
-        .then((response) => response.json())
-        .then((json) => {
+        .then((response) => {
             toast.success('Updated post successfully')
-            return json;
-        });
-    return res
+            return response.json()
+        })
+        .catch((err) => {
+            return apiErrorHandler(err)
+        })
 }
