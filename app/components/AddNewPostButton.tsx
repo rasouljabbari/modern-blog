@@ -2,11 +2,13 @@
 import { useState } from 'react';
 import ModalParent from './modals/ModalParent';
 import PostContentModal from './modals/PostContentModal';
+import { useSelector } from 'react-redux';
 
 const AddNewPostButton = () => {
     const [showModal, setShowModal] = useState(false);
-
+    const user = useSelector((state: any) => state.userSessionsReducer.user)
     return (
+        user.name && 
         <>
             <button
                 onClick={() => setShowModal(true)}

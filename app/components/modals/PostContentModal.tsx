@@ -12,7 +12,7 @@ const PostContentModal = ({ setShowModal, post, isNew = false }: modalContentTyp
     const [loader, setLoader] = useState(false)
 
     const dispatch = useDispatch()
-    const list = useSelector((state: any) => state.postList);
+    const list = useSelector((state: any) => state.postsReducer.postList);
 
     useEffect(() => {
         setInputs({

@@ -7,7 +7,7 @@ const DeletePostConfirmModal = ({ setShowModal, postId }: deletePostType) => {
 
     const [loader, setLoader] = useState(false)
     const dispatch = useDispatch()
-    const list = useSelector((state: any) => state.postList);
+    const list = useSelector((state: any) => state.postsReducer.postList);
 
     const handleForm = async (e: FormEvent) => {
         e.preventDefault()

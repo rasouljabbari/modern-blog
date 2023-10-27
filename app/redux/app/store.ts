@@ -1,9 +1,15 @@
 "use client";
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore,combineReducers } from '@reduxjs/toolkit';
 import postsReducer from '../features/postsSlice'
+import userSessionsReducer from '../features/userSessionSlice'
+
+const rootReducer = combineReducers({
+    postsReducer,
+    userSessionsReducer
+})
 
 const store = configureStore({
-    reducer: postsReducer,
+    reducer: rootReducer,
 });
 
 export default store;

@@ -19,7 +19,7 @@ const PostListInfiniteScroll = ({ initialPosts }: { initialPosts: postType[] }) 
     const [isEmptyList, setIsEmptyList] = useState(false)
     const [ref, inView] = useInView()
 
-    const list = useSelector((state: any) => state.postList);
+    const list = useSelector((state: any) => state.postsReducer.postList);
     const dispatch = useDispatch();
 
     useEffect(() => {
