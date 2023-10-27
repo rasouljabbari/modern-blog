@@ -19,7 +19,7 @@ function LoginButton() {
       <div className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-800 border border-white">
         <GithubIcon/>
       </div>
-      <p className="hidden md:mr-2 md:block text-md">Login with GitHub</p>
+      <p className="hidden md:mr-2 md:block text-md">Login With Github</p>
     </SecondaryButton>
   );
 }
